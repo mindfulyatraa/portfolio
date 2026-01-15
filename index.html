@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KING – Automations, Bots & Websites</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sonu (KING) builds n8n automations, Telegram bots, and high-converting websites for startups and online businesses." />
+
+  <!-- Google Font: modern, tech SaaS style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-main: #050816;
+      --bg-elevated: #0b1020;
+      --bg-soft: #111827;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.16);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(156, 163, 175, 0.3);
+      --danger: #f97373;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.75);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+      --transition-fast: 180ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #000 80%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      color: var(--text-main);
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0 3rem;
+      scroll-margin-top: 80px;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .section-heading {
+      font-size: 1.9rem;
+      margin-bottom: 1.75rem;
+      font-weight: 600;
+    }
+
+    .section-description {
+      color: var(--text-muted);
+      max-width: 32rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* Header / Nav */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(5, 8, 22, 0.94), rgba(5, 8, 22, 0.75), transparent);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.8);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.25rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.16) 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.6) 0, rgba(34, 197, 94, 0) 60%);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #ecfdf5;
+      box-shadow: 0 0 22px rgba(34, 197, 94, 0.35);
+    }
+
+    .logo-text-main {
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f9fafb;
+      font-weight: 600;
+    }
+
+    .logo-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(5, 8, 22, 1));
+      color: #ecfdf5;
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 0 18px rgba(22, 163, 74, 0.3);
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .nav-cta span {
+      font-size: 1rem;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.32), rgba(5, 8, 22, 1));
+      box-shadow: 0 0 26px rgba(22, 163, 74, 0.5);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav-toggle-bar {
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      position: relative;
+    }
+
+    .nav-toggle-bar::before,
+    .nav-toggle-bar::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      transition: transform 160ms ease-out, top 160ms ease-out, opacity 160ms ease-out;
+    }
+
+    .nav-toggle-bar::before {
+      top: -5px;
+    }
+
+    .nav-toggle-bar::after {
+      top: 5px;
+    }
+
+    .nav-toggle.active .nav-toggle-bar {
+      background: transparent;
+    }
+
+    .nav-toggle.active .nav-toggle-bar::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .nav-toggle.active .nav-toggle-bar::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 4rem 0 4.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-kicker-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #bbf7d0 0, #22c55e 55%, #052e16 100%);
+      box-shadow: 0 0 14px rgba(34, 197, 94, 0.85);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.1rem);
+      line-height: 1.1;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #bbf7d0, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      max-width: 34rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.9rem;
+    }
+
+    .hero-badge {
+      font-size: 0.7rem;
+      border-radius: var(--radius-pill);
+      padding: 0.2rem 0.75rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .btn-primary {
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      background: radial-gradient(circle at 0 0, rgba(190, 242, 100, 0.9), rgba(22, 163, 74, 1));
+      color: #052e16;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow:
+        0 18px 60px rgba(34, 197, 94, 0.6),
+        0 0 30px rgba(34, 197, 94, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow:
+        0 20px 70px rgba(34, 197, 94, 0.85),
+        0 0 38px rgba(34, 197, 94, 0.6);
+    }
+
+    .btn-secondary {
+      padding: 0.8rem 1.25rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.98);
+      border-color: rgba(148, 163, 184, 1);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      padding: 1.3px;
+      background:
+        conic-gradient(from 180deg at 50% 50%, rgba(34, 197, 94, 0.16), rgba(37, 99, 235, 0.07), rgba(15, 23, 42, 1), rgba(34, 197, 94, 0.18));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-panel-inner {
+      border-radius: 24px;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.08), transparent 55%), #020617;
+      padding: 1.25rem 1.4rem 1.3rem;
+      border: 1px solid rgba(15, 23, 42, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero-pill {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text-muted);
+    }
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(22, 163, 74, 0.4);
+      font-size: 0.72rem;
+      color: #bbf7d0;
+    }
+
+    .hero-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #bbf7d0 0, #22c55e 55%, #052e16 100%);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .metric-card {
+      border-radius: 14px;
+      padding: 0.7rem 0.8rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 1);
+      font-size: 0.8rem;
+    }
+
+    .metric-label {
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .metric-value {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .metric-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.4rem;
+    }
+
+    .metric-chip {
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 1);
+      color: var(--text-muted);
+    }
+
+    .hero-stack {
+      margin-top: 0.75rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .hero-stack span {
+      padding: 0.18rem 0.55rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.7;
+      background:
+        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.33), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.2), transparent 65%);
+      mix-blend-mode: screen;
+    }
+
+    /* Cards grid */
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.25rem;
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.08), transparent 55%), #020617;
+      border: 1px solid rgba(31, 41, 55, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background 200ms ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.25), transparent 55%);
+      opacity: 0;
+      transition: opacity 220ms ease-out;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34, 197, 94, 0.6);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 11px;
+      background: rgba(34, 197, 94, 0.16);
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbf7d0;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      font-weight: 550;
+    }
+
+    .card-copy {
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    /* Why choose me list */
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 2.4rem;
+      font-size: 0.9rem;
+    }
+
+    .reason-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      color: var(--text-muted);
+    }
+
+    .reason-bullet {
+      margin-top: 0.25rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #bbf7d0 0, #22c55e 55%, #052e16 100%);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.7);
+      flex-shrink: 0;
+    }
+
+    /* Pricing */
+
+    .pricing-wrapper {
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.5rem 1.6rem;
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(31, 41, 55, 1);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+      padding: 0.7rem 0.3rem;
+      text-align: left;
+    }
+
+    .pricing-table th {
+      color: var(--text-muted);
+      font-weight: 500;
+      border-bottom: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .pricing-table tr + tr {
+      border-top: 1px solid rgba(31, 41, 55, 1);
+    }
+
+    .pricing-label {
+      font-weight: 500;
+    }
+
+    .pricing-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .pill-outline {
+      border-radius: var(--radius-pill);
+      border: 1px dashed rgba(148, 163, 184, 0.9);
+      padding: 0.25rem 0.7rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* How it works */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.1rem;
+      font-size: 0.86rem;
+    }
+
+    .step {
+      border-radius: var(--radius-md);
+      padding: 1rem 1rem;
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(15, 23, 42, 0.95);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-number {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-title {
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .step-copy {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* About */
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .about-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .about-card {
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.3rem 1.2rem;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.1), transparent 65%), #020617;
+      border: 1px solid rgba(31, 41, 55, 1);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+      font-size: 0.86rem;
+    }
+
+    .about-tag {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-role {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .about-highlight {
+      padding: 0.5rem 0.7rem;
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(148, 163, 184, 0.85);
+      margin-bottom: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .about-foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .about-foot span {
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    /* Contact */
+
+    .contact-box {
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 1.5rem 1.7rem;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.14), transparent 65%), #020617;
+      border: 1px solid rgba(31, 41, 55, 1);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    .contact-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      max-width: 24rem;
+      line-height: 1.6;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .contact-btn {
+      flex: 0 0 auto;
+      padding: 0.75rem 1.1rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .contact-btn:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(148, 163, 184, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .contact-btn.primary {
+      border-color: rgba(34, 197, 94, 0.6);
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 1));
+    }
+
+    .contact-btn-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #bbf7d0;
+    }
+
+    .contact-email {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      word-break: break-all;
+    }
+
+    .contact-email a {
+      color: #e5e7eb;
+      text-decoration: underline;
+      text-decoration-color: rgba(148, 163, 184, 0.9);
+      text-underline-offset: 3px;
+    }
+
+    /* Tech stack */
+
+    .stack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .stack-chip {
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .stack-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.85);
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 1.8rem 0 2.2rem;
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      margin-top: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-right a {
+      color: var(--text-muted);
+    }
+
+    .footer-right a:hover {
+      color: var(--text-main);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-layout,
+      .contact-box {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        background: rgba(5, 8, 22, 0.96);
+      }
+
+      .nav-links {
+        position: absolute;
+        inset-inline: 1.5rem;
+        top: 4.2rem;
+        padding: 0.9rem 1rem 1rem;
+        border-radius: 16px;
+        border: 1px solid rgba(31, 41, 55, 1);
+        background: rgba(15, 23, 42, 0.98);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        transform-origin: top;
+        transform: scaleY(0.8);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 160ms ease-out, transform 160ms ease-out;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        transform: scaleY(1);
+        pointer-events: auto;
+      }
+
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        padding-inline: 1.1rem;
+      }
+
+      section {
+        padding: 3.5rem 0 2.5rem;
+      }
+
+      .hero {
+        padding-top: 3.2rem;
+      }
+
+      .section-heading {
+        font-size: 1.5rem;
+      }
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .reasons {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .contact-btn {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Header -->
+    <header>
+      <div class="wrapper">
+        <nav class="nav">
+          <div class="nav-left">
+            <div class="logo-mark">K</div>
+            <div>
+              <div class="logo-text-main">KING</div>
+              <div class="logo-sub">Automation & Web</div>
+            </div>
+          </div>
+
+          <div class="nav-links" id="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#what-i-do">What I do</a>
+            <a href="#services">Pricing</a>
+            <a href="#how-it-works">Process</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="nav-cta">
+              Get Your Automation
+              <span>↗</span>
+            </a>
+          </div>
+
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <div class="nav-toggle-bar"></div>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero" id="hero">
+        <div class="wrapper">
+          <div class="hero-grid">
+            <div>
+              <div class="hero-kicker">
+                <div class="hero-kicker-dot"></div>
+                <span>n8n automations · Telegram bots · Websites</span>
+              </div>
+
+              <h1 class="hero-title">
+                Automate Your Business.<br />
+                <span>Grow Faster.</span>
+              </h1>
+
+              <p class="hero-sub">
+                I build n8n automations, Telegram bots, and high-converting websites that save time and increase revenue for startups and online businesses worldwide.
+              </p>
+
+              <div class="hero-badges">
+                <span class="hero-badge">Focused on ROI</span>
+                <span class="hero-badge">Async & direct communication</span>
+                <span class="hero-badge">Hourly from $10</span>
+              </div>
+
+              <div class="hero-actions">
+                <button class="btn-primary" onclick="scrollToSection('contact')">
+                  Get Your Automation
+                  <span>→</span>
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('services')">
+                  <span class="btn-secondary-dot"></span>
+                  View services & pricing
+                </button>
+              </div>
+            </div>
+
+            <div class="hero-right">
+              <div class="hero-panel" aria-hidden="true">
+                <div class="hero-panel-inner">
+                  <div class="hero-panel-header">
+                    <div class="hero-pill">Current focus · KING</div>
+                    <div class="hero-status">
+                      <span class="hero-status-dot"></span>
+                      <span>Taking new projects</span>
+                    </div>
+                  </div>
+
+                  <div class="hero-metrics">
+                    <div class="metric-card">
+                      <div class="metric-label">Automation types</div>
+                      <div class="metric-value">Workflows that ship</div>
+                      <div class="metric-chip-row">
+                        <div class="metric-chip">Lead capture</div>
+                        <div class="metric-chip">CRM sync</div>
+                        <div class="metric-chip">Notifications</div>
+                      </div>
+                    </div>
+                    <div class="metric-card">
+                      <div class="metric-label">Typical clients</div>
+                      <div class="metric-value">Lean teams</div>
+                      <div class="metric-chip-row">
+                        <div class="metric-chip">SaaS</div>
+                        <div class="metric-chip">Agencies</div>
+                        <div class="metric-chip">Creators</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="metric-card" style="margin-top:0.1rem;">
+                    <div class="metric-label">What you get</div>
+                    <div class="metric-value">Simple, scalable automation</div>
+                    <p class="card-copy" style="margin-top:0.3rem;">
+                      No bloated systems. Just clean workflows that you understand, own, and can extend as you grow.
+                    </p>
+                  </div>
+
+                  <div class="hero-stack">
+                    <span>n8n</span>
+                    <span>Telegram API</span>
+                    <span>Node.js</span>
+                    <span>Fast, clean frontend</span>
+                  </div>
+
+                  <div class="hero-glow"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What I do -->
+      <section id="what-i-do">
+        <div class="wrapper">
+          <div class="section-label">What I do</div>
+          <h2 class="section-heading">Automation and web that moves KPIs</h2>
+          <p class="section-description">
+            Every project is designed around one thing: helping your business earn more while spending fewer hours on manual work.
+          </p>
+
+          <div class="card-grid">
+            <div class="card">
+              <div class="card-icon">⚙️</div>
+              <h3 class="card-title">n8n Automation</h3>
+              <p class="card-copy">
+                Turn repetitive tasks into reliable workflows that run 24/7, so your team can focus on high-value work instead of manual data entry.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">🤖</div>
+              <h3 class="card-title">Telegram Bot Development</h3>
+              <p class="card-copy">
+                Build Telegram bots that capture leads, send alerts, and handle operations automatically, right where your team and customers already chat.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">🖥️</div>
+              <h3 class="card-title">Website Development</h3>
+              <p class="card-copy">
+                Launch fast, modern landing pages and sites that look sharp, load quickly, and convert visitors into paying users across devices.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">📦</div>
+              <h3 class="card-title">Digital Product Setup</h3>
+              <p class="card-copy">
+                Get a complete setup for your online courses, digital downloads, and memberships with payment, delivery, and automation wired together.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why choose me -->
+      <section id="why-me">
+        <div class="wrapper">
+          <div class="section-label">Why choose me</div>
+          <h2 class="section-heading">A freelancer who thinks like a business</h2>
+          <p class="section-description">
+            You are not hiring a hobbyist. You are working with someone who cares about clear communication, deadlines, and measurable outcomes.
+          </p>
+
+          <div class="reasons">
+            <div class="reason-item">
+              <div class="reason-bullet"></div>
+              <div>Fast delivery so you can start testing and generating value in days, not months.</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-bullet"></div>
+              <div>Business-focused automation that maps directly to your revenue and operations goals.</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-bullet"></div>
+              <div>Clean & scalable workflows that are documented, modular, and easy to extend later.</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-bullet"></div>
+              <div>Direct communication with the person doing the work, no layers or slow handoffs.</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-bullet"></div>
+              <div>Affordable international pricing with clear, simple packages and hourly options.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services & pricing -->
+      <section id="services">
+        <div class="wrapper">
+          <div class="section-label">Services & pricing</div>
+          <h2 class="section-heading">Clear starting points, no surprises</h2>
+          <p class="section-description">
+            Pricing is transparent and scoped around the actual outcome you need, with hourly options for support and iteration.
+          </p>
+
+          <div class="pricing-wrapper">
+            <table class="pricing-table" aria-label="Services and pricing">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>What it includes</th>
+                  <th>Starting at</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="pricing-label">n8n automation</td>
+                  <td>Custom workflow design, integration with your existing tools, and basic documentation.</td>
+                  <td>From <strong>$100</strong></td>
+                </tr>
+                <tr>
+                  <td class="pricing-label">Telegram bots</td>
+                  <td>Custom bot logic, API integrations, and deployment to your Telegram account.</td>
+                  <td>From <strong>$100</strong></td>
+                </tr>
+                <tr>
+                  <td class="pricing-label">Websites</td>
+                  <td>High-converting single-page or small marketing site with responsive, fast front-end.</td>
+                  <td>From <strong>$100</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="pricing-note">
+              <span>Hourly rate: <strong>$10/hr</strong> for ongoing support, optimizations, and new features.</span>
+              <span class="pill-outline">All projects start with a short call or chat to clarify scope.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how-it-works">
+        <div class="wrapper">
+          <div class="section-label">How it works</div>
+          <h2 class="section-heading">Simple process, fast execution</h2>
+          <p class="section-description">
+            The entire collaboration is designed to be lightweight for you while giving enough structure to deliver reliable automation.
+          </p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">Step 1</div>
+              <div class="step-title">You tell me your problem</div>
+              <p class="step-copy">
+                Share what you do manually today, which tools you use, and what a perfect outcome would look like.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">Step 2</div>
+              <div class="step-title">I build a custom solution</div>
+              <p class="step-copy">
+                I design and implement an automation, bot, or website tailored to your stack and workflows.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">Step 3</div>
+              <div class="step-title">You test</div>
+              <p class="step-copy">
+                You try it on real-world scenarios, share feedback, and request tweaks while we refine everything.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">Step 4</div>
+              <div class="step-title">You launch</div>
+              <p class="step-copy">
+                Once it works as expected, we go live and optionally add monitoring or further automation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <div class="wrapper">
+          <div class="section-label">About me</div>
+          <h2 class="section-heading">A developer focused on leverage</h2>
+          <div class="about-layout">
+            <p class="about-text">
+              I'm Sonu (KING), a freelancer who helps businesses automate their work and grow faster using modern tools like n8n, bots, and web apps. I focus on simple, effective, and affordable solutions for startups and online businesses that need to move quickly without adding complexity.
+            </p>
+
+            <div class="about-card">
+              <div class="about-tag">Freelancer · KING</div>
+              <div class="about-name">Sonu</div>
+              <div class="about-role">Automation, bots & web</div>
+
+              <div class="about-highlight">
+                I work directly with founders, operators, and teams who want practical automation that ships in days, not long consulting projects.
+              </div>
+
+              <div class="about-foot">
+                <span>Async-friendly</span>
+                <span>Clear scopes</span>
+                <span>Timezone-flexible</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="wrapper">
+          <div class="section-label">Contact</div>
+          <h2 class="section-heading">Tell me what you want to automate</h2>
+
+          <div class="contact-box">
+            <div>
+              <p class="contact-text">
+                Share a short description of your business, tools, and what you would like to automate or build. You can send a quick message and we continue from there.
+              </p>
+              <div class="contact-actions">
+                <a href="https://wa.me/000000000000" class="contact-btn primary" target="_blank" rel="noopener">
+                  <span class="contact-btn-icon">✚</span>
+                  WhatsApp
+                </a>
+                <a href="https://t.me/your_username_here" class="contact-btn" target="_blank" rel="noopener">
+                  <span class="contact-btn-icon">⚡</span>
+                  Telegram
+                </a>
+                <a href="mailto:hello@example.com" class="contact-btn">
+                  <span class="contact-btn-icon">✉</span>
+                  Email
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <div class="contact-email">
+                Prefer email? Send a brief with your idea, budget range, and timeline to
+                <a href="mailto:hello@example.com">hello@example.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech stack -->
+      <section id="stack">
+        <div class="wrapper">
+          <div class="section-label">Tech stack</div>
+          <h2 class="section-heading">Built with tools that last</h2>
+          <p class="section-description">
+            Under the hood, your automation and sites use modern, battle-tested technology that is easy to maintain and extend.
+          </p>
+
+          <div class="stack-chips">
+            <div class="stack-chip">
+              <span class="stack-dot"></span>
+              <span>JavaScript</span>
+            </div>
+            <div class="stack-chip">
+              <span class="stack-dot"></span>
+              <span>Node.js</span>
+            </div>
+            <div class="stack-chip">
+              <span class="stack-dot"></span>
+              <span>HTML</span>
+            </div>
+            <div class="stack-chip">
+              <span class="stack-dot"></span>
+              <span>CSS</span>
+            </div>
+            <div class="stack-chip">
+              <span class="stack-dot"></span>
+              <span>n8n</span>
+            </div>
+            <div class="stack-chip">
+              <span class="stack-dot"></span>
+              <span>Telegram API</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="wrapper">
+        <div class="footer-inner">
+          <div>© <span id="year"></span> KING · Sonu. All rights reserved.</div>
+          <div class="footer-right">
+            <a href="#hero">Back to top</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("active");
+      navLinks.classList.toggle("open");
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (navLinks.classList.contains("open")) {
+          navLinks.classList.remove("open");
+          navToggle.classList.remove("active");
+        }
+      });
+    });
+
+    // Smooth scroll helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
